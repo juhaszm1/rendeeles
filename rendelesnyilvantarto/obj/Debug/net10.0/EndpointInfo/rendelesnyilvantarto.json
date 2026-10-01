@@ -1,0 +1,137 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "rendelesnyilvantarto | v1",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:7204"
+    },
+    {
+      "url": "http://localhost:5035"
+    }
+  ],
+  "paths": {
+    "/rendeles/all": {
+      "get": {
+        "tags": [
+          "Rendeles"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/rendeles/byid": {
+      "get": {
+        "tags": [
+          "Rendeles"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/rendeles/add": {
+      "post": {
+        "tags": [
+          "Rendeles"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rendeles"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rendeles"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rendeles"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Rendeles": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "etel": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "leiras": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "rendelesIdopont": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "frissitesIdopont": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vendegId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Rendeles"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+@rendelesnyilvantarto_HostAddress = http://localhost:5035
+
+GET {{rendelesnyilvantarto_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
